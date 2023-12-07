@@ -8,8 +8,8 @@ const CategoryItem = ({ category }) => {
                 backgroundImage: `url(${imageUrl})`
             }} />
             <div className="category-body-container">
-                <h2>{title}</h2>
-                <p>Show Now</p>
+                <h2 style={{ fontStyle: 'bold'}}>{title}</h2>
+                <p style={{ fontStyle: 'italic'}}>Show Now</p>
             </div>
         </div>
     )
