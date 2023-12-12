@@ -43,7 +43,7 @@ const SignUpForm = () => {
         password
       );
 
-      const userDocRef = await createUserDocumentFromAuth(user, {
+      await createUserDocumentFromAuth(user, {
         displayName,
       });
       alert("Sign up successful");
@@ -63,7 +63,7 @@ const SignUpForm = () => {
 
   return (
     <div className="sign-up-container">
-      <h2>Don't have an account</h2>
+      <h2>I don't have an account</h2>
       <span>Signup with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
