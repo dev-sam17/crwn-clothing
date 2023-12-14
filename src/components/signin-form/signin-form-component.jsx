@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   authUserSignInWithEmailAndPassword
 } from "../../utils/firebase/firebase.utils";
 
@@ -18,6 +17,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -52,8 +52,7 @@ const SignInForm = () => {
 
   const logGoogleUser = async () => {
     try {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        await signInWithGooglePopup(); 
         alert('Login with Google successful');
     } catch (error) {
         if ( error.code === 'auth/popup-closed-by-user'  || error.code === 'auth/popup-blocked') {
@@ -67,7 +66,7 @@ const SignInForm = () => {
 
   return (
     <div className="sign-in-container">
-      <h2>I already have an account</h2>
+      <h2>Already have an account?</h2>
       <span>Signin</span>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -89,9 +88,9 @@ const SignInForm = () => {
         />
 
         <div className="buttons-container">
-          <Button children="Sign Up" type="Submit" />
+          <Button children="Sign In" type="Submit" />
           <Button onClick={logGoogleUser} buttonType="google">
-            Sign in with Google
+            Google Sign In
           </Button>
         </div>
       </form>
